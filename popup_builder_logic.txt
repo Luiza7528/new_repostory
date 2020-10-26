@@ -1,0 +1,64 @@
+﻿1) popup-builder.php --> boot.php (add defines and check defines if doesn't 
+exist,then add) --> SGPBRequirementsChecker.php (check php version)
+
+2) popup-builder.php --> PopupBuilderInit.php (included required data, 
+registred hooks activate or deactivate, and registred other hooks)
+
+3) PopupBuilderInit.php --> Installer.php (if user clicks activate, create tables if
+not exists and register plugin SgpbPopupExtensionRegister.php, set capabilities user 
+AdminHelper.php read/edit/delete)
+
+4) PopupBuilderInit.php --> Functions.php (if user clicks deactivate, then 
+we should clear all transients and remove selected type options, 
+unset capabilities user AdminHelper.php and remove extension) 
+
+5) PopupBuilderInit.php --> Actions.php (add functions to our plugin by using 
+the add_action() function)
+
+6)PopupBuilderInit.php --> Filters.php (add filters to our plugin by using 
+the add_filter() function)
+
+7)PopupBuilderInit.php --> notificationCenter.php (add notifications functions, and activate cron) 
+
+8)PopupBuilderInit.php --> SGPBListTable (draw popups list in table, table search, pagination, etc.)
+
+9)SGPBListTable  --> ajax.php (if user clicks Enabled (show popup) switch button calls changePopupStatus function from Ajax.php)
+
+10) PopupBuilderInit.php --> AdminHelper.php --> getPopupTypesPageURL() (returns popup types page URL, when user clicks 
+Add new button redirect to popup types page. After popup type selection opens relevant view)
+
+11) For saveing popup info, calls save() function from SGPopup.php class. If popup type is image, calls save() from ImagePopup.php and his parent(SGPopup.php) class save() function
+--------------------
+
+
+11) post.php --> Ajax.php (do_action sgpbAutosave function for set our popup data)
+
+
+
+
+------------------------------------
+HOOKS
+/*Action functions (for info)*/
+has_action()
+add_action()
+do_action()
+do_action_ref_array()
+did_action()
+remove_action()
+remove_all_actions()
+doing_action()
+/*---------------------------*/ 
+
+/*Filter functions (for info)*/
+has_filter()
+add_filter()
+apply_filters()
+apply_filters_ref_array()
+current_filter()
+remove_filter()
+remove_all_filters()
+doing_filter()
+/*---------------------------*/ 
+
+
+
